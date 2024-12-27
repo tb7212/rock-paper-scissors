@@ -45,14 +45,38 @@ function playRound(humanChoice, computerChoice){
             || (humanChoice === "scissors" && computerChoice === "rock") ){
 
         console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+        computerScore++;
     }
 
     else{
         console.log(`You win! ${humanChoice} beats ${computerChoice}`); 
+        humanScore++;
     }
 }
 
-    let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
 
-    playRound(humanChoice, computerChoice);
+    function playGame(){
+        let numRounds = 0;
+
+        while(numRounds < 5){
+            let humanChoice = getHumanChoice();
+            let computerChoice = getComputerChoice();
+
+            playRound(humanChoice, computerChoice);
+            numRounds++;
+
+        }
+
+        if(humanScore > computerScore){
+            return `Congratulations! You won the game by ${humanScore-computerScore} points`;
+        }
+        else if(computerScore > humanScore){
+            return `Oh no! You lost the game by ${computerScore-humanScore} points`;
+        }
+        else{
+            return 'Tie game!';
+        }
+    }
+
+    console.log(playGame());
+    
