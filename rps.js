@@ -16,7 +16,7 @@ function getComputerChoice(){
     }
 }
 
-console.log(getComputerChoice());
+
 
 function getHumanChoice(){
     let choice = prompt("Type your selection: Rock, Paper, or Scissors? ");
@@ -32,11 +32,27 @@ function getHumanChoice(){
 
 }
 
-console.log(getHumanChoice());
+
 
 
 function playRound(humanChoice, computerChoice){
     if(humanChoice === computerChoice){
         console.log(`Draw! ${humanChoice} is equal to ${computerChoice}`);
     }
+
+    else if((humanChoice === "rock" && computerChoice === "paper")
+            ||(humanChoice === "paper" && computerChoice === "scissors")
+            || (humanChoice === "scissors" && computerChoice === "rock") ){
+
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+    }
+
+    else{
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`); 
+    }
 }
+
+    let humanChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
+
+    playRound(humanChoice, computerChoice);
